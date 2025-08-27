@@ -107,4 +107,6 @@ The model helps online platforms identify and manage toxic comments, promoting h
 ---
 
 
-**Note:** The `best_model.keras` file is stored using **Git LFS**. Make sure to install Git LFS before cloning the repository.
+**Note:**  
+- The `best_model.keras` file is stored using **Git LFS**. Make sure to install Git LFS before cloning the repository.  
+- The training and test CSV files are large and may exceed GitHub’s standard file size limits. You can either download them via Git LFS or use smaller sample datasets for testing the Streamlit app.
