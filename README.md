@@ -1,109 +1,110 @@
-# Deep Learning for Comment Toxicity Detection
+# Comment Toxicity Detection
+
+Deep Learning-based multi-label toxicity detection system for online comments.  
+This project uses an **LSTM model** to detect various forms of toxic comments and provides a **Streamlit app** for real-time and bulk predictions.
+
+---
 
 ## Project Overview
-Online communities and social media platforms have become integral to modern communication. However, toxic comments—harassment, hate speech, offensive language—pose challenges to maintaining healthy discussions. This project develops a **deep learning-based model** to detect and flag toxic comments in real-time.
 
-The project leverages **Python, TensorFlow, Keras, and Streamlit** to preprocess text data, train a multi-label classification model using LSTM architecture, and deploy an interactive web application for real-time comment toxicity prediction.
+Online communities and social media platforms have become integral parts of modern communication. However, the prevalence of toxic comments, which include harassment, hate speech, and offensive language, poses significant challenges to maintaining healthy discussions.  
 
----
+This project aims to **build a deep learning-based comment toxicity detection system** using Python. The model predicts the likelihood of a comment being toxic across multiple categories:  
 
-## Problem Statement
-Online communities and social media platforms face challenges in moderating user-generated content due to the prevalence of toxic comments. The goal is to create an automated system capable of analyzing comments and predicting their toxicity. By identifying toxic comments accurately, this model assists moderators in filtering, warning users, or taking further actions to maintain a healthy online environment.
+- `toxic`  
+- `severe_toxic`  
+- `obscene`  
+- `threat`  
+- `insult`  
+- `identity_hate`  
 
----
-
-## Dataset
-- **train.csv**: Contains user comments along with multi-label toxicity annotations (`toxic`, `severe_toxic`, `obscene`, `threat`, `insult`, `identity_hate`).
-- **test.csv**: Contains comments to perform bulk prediction (without labels).
-
----
-
-## Features & Skills Learned
-- **Deep Learning & NLP**: LSTM-based multi-label classification, text preprocessing, tokenization, vectorization.
-- **Model Evaluation**: Classification report, confusion matrix, accuracy & loss visualization.
-- **Web App Development**: Interactive web application using **Streamlit** for real-time predictions.
-- **Deployment**: Model saving/loading, bulk predictions, CSV downloads.
+By identifying toxic comments automatically, the system assists platform moderators in filtering, warning users, or initiating further review processes.
 
 ---
 
 ## Project Type
-- **Type**: Classification (Multi-label)
-- **Domain**: Online Community Management / Content Moderation
+
+- **Type**: EDA + Multi-label Classification  
 
 ---
 
-## Model Architecture
-- **Embedding Layer**: Converts words into dense vector representations.
-- **LSTM Layer**: Captures sequential dependencies and contextual meaning.
-- **Global Max Pooling**: Retains most important features.
-- **Dense Layers**: Fully connected layers for classification.
-- **Output Layer**: Six neurons for toxicity labels with **sigmoid activation** for multi-label classification.
+## Features
+
+- Text preprocessing (cleaning, tokenization, stopword removal)  
+- Multi-label classification using **LSTM model**  
+- Model evaluation: Accuracy, Loss, Confusion Matrix, Classification Report  
+- Real-time prediction using **Streamlit app**  
+- Bulk predictions from CSV files  
+- Pre-trained model (`best_model.keras`) included via Git LFS  
 
 ---
 
-## Installation & Setup
-1. Clone the repository:
-```bash
-git clone https://github.com/YourUsername/Comment-Toxicity-Detection.git
-cd Comment-Toxicity-Detection
-````
+## Project Files
 
-2. Create and activate a Python virtual environment:
+| File/Folder | Description |
+|-------------|-------------|
+| `best_model.keras` | Trained LSTM model for toxicity detection (**requires Git LFS**) |
+| `tokenizer.pkl` | Tokenizer used for text preprocessing |
+| `app.py` | Streamlit application for real-time and bulk prediction |
+| `Comment_Toxicity.ipynb` | Jupyter notebook with EDA, model training, evaluation, and markdown |
+| `data/` | Example CSV files for training/test (optional) |
+| `README.md` | Project overview and instructions |
 
-```bash
-python -m venv venv
-# Windows
-venv\Scripts\activate
-# Linux / Mac
-source venv/bin/activate
-```
+---
 
-3. Install dependencies:
+## Getting Started
 
+### Prerequisites
+
+- Python 3.8+  
+- Install dependencies:  
 ```bash
 pip install -r requirements.txt
+````
+
+* **Git LFS** (to download the model file):
+
+```bash
+git lfs install
+git lfs track "*.keras"
+```
+
+### Clone the Repository
+
+```bash
+git clone https://github.com/Vignesha-S/Comment-Toxicity-Detection.git
+cd Comment-Toxicity-Detection
+git lfs pull
 ```
 
 ---
 
-## Usage
-
-### Training the Model
-
-```python
-# Run in Jupyter Notebook
-# Preprocess data, train LSTM model, evaluate, and save model
-```
-
-### Running the Streamlit App
+## Running the Streamlit App
 
 ```bash
 streamlit run app.py
 ```
 
-* Enter a comment to predict toxicity in real-time.
-* Upload a CSV file for bulk predictions and download results.
+* **Real-time prediction:** Enter a comment in the text area and click **Predict**
+* **Bulk prediction:** Upload a CSV file with a `comment_text` column
 
 ---
 
-## Evaluation Metrics
+## Usage Notes
 
-* **Classification Report**: Precision, Recall, F1-score for each toxicity label.
-* **Confusion Matrix**: Visualizes prediction performance per label.
-* **Train/Validation Accuracy & Loss**: Monitored across epochs.
-
----
-
-## Project Deliverables
-
-1. **Interactive Streamlit Application** – Real-time and bulk toxicity detection.
-2. **Trained Model** – Saved in `.keras` format.
-3. **Tokenizer** – Saved for preprocessing new data.
-4. **Jupyter Notebook** – Step-by-step project workflow with markdown explanations.
+* The model is trained for multi-label classification. Each comment can belong to multiple categories simultaneously.
+* Predictions range from 0 to 1 for each label, representing the probability of that label.
+* Ensure Git LFS is installed to download large files (`best_model.keras`)
 
 ---
 
-## Conclusion
+## Project Summary
 
-The project successfully builds a multi-label toxicity detection system capable of analyzing comments and predicting their likelihood of being toxic. The Streamlit application allows users and moderators to quickly identify harmful content, making online communities safer and healthier.
+This project demonstrates the complete workflow for building a deep learning solution for toxicity detection, from **data preprocessing** and **EDA**, to **model training**, **evaluation**, and **deployment** using Streamlit. Users can enter text or upload CSV files to get predictions in real-time.
 
+The model helps online platforms identify and manage toxic comments, promoting healthier and safer online communities.
+
+---
+
+
+**Note:** The `best_model.keras` file is stored using **Git LFS**. Make sure to install Git LFS before cloning the repository.
